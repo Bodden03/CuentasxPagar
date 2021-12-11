@@ -1,0 +1,66 @@
+{% extends 'Layout.html' %}
+{% block body %}
+
+{% with messages = get_flashed_messages()  %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+{{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div class="row"> 
+<div class="colm-5">
+
+
+    <div class="card card-body">
+        <form action="/guardar_idioma" method="POST">
+            <div class="form-group">
+                <input type="text" name="idioma" placeholder="Idioma" class="form-control" required>
+                <select name="estado" class="form-control">
+                    <option value=1>Activo</option>
+                    <option value=0>inactivo</option>
+                </select>
+
+            </div>
+            <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">
+                guardar
+            </button>
+             </div>
+            </form>
+        
+    </div>
+</div>
+<div class="colm-7">
+    <table class="table table-striped table-border ">
+        <tdhead>
+            <tr>
+                <td>ID</td>
+                <td>Idioma</td>
+                <td>Estatus</td>
+                <td>Operaciones</td>
+            </tr>
+        </tdhead>
+        <tbody>
+            {% for idioma in idioma %}
+             <tr>
+                 <td>{{idioma.0}} </td>
+                 <td>{{idioma.1}} </td>
+                 <td>{{idioma.2}} </td>
+                 <td>
+                     <a href="/editaridioma/{{idioma.0}}" class="btn btn-secundary">Editar</a>
+                     <a href="/eliminaridioma/{{idioma.0}}" class="btn btn-danger btn-delete">Eliminar</a>
+                 </td>
+             </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+{% endblock %}
+

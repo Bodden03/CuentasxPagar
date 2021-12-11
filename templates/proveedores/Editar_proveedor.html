@@ -1,0 +1,68 @@
+{% extends 'Layout.html' %}
+<div class="container pt-5">
+{% block body %}
+
+{% with messages = get_flashed_messages()  %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+{{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+
+<div class="card card-body">
+  <h1>Registro de Proveedores <span class="badge badge-primary"></span></h1>
+<form action="/update_proveedor/{{proveedores.0}}" method="POST">
+    <div class="form-row">
+      <div class="form-group col-md-8">
+        <label for="inputEmail4">Nombre</label>
+        <input type="text" class="form-control" name="nombre" id="inputEmail4" placeholder="Nombre"  value="{{proveedores.1}}">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputState">Tipo Persona</label>
+        <select id="inputState" name="tipo_persona" class="form-control" value="{{proveedores.2}}">
+          <option selected>Choose...</option>
+          <option value=1>Juridica</option>
+          <option value=2>Fisica</option>
+        </select>
+      </select>
+      </div>
+    </div>
+    <div class="form-row">
+
+      <div class="form-group col-md-6">
+        <label for="inputAddress">Cedula</label>
+        <input type="text" class="form-control cedula" id="myText" name="cedula" placeholder="Cedula sin guiones" value="{{proveedores.3}}">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputAddress2">Balance</label>
+        <input type="number" class="form-control" id="inputAddress2" name="balance" placeholder="Balance" value="{{proveedores.4}}">
+      </div>
+      <div class="form-group col-md-8">
+        <label for="inputPassword4">Estado</label>
+        <input type="checkbox" class="form-control" name="estado" id="inputPassword4" placeholder="Estado" value="{{proveedores.5}}">
+      </div>
+    </div>
+  
+
+  
+    
+    </div>
+    <button type="submit" class="btn btn-primary" onclick="return myFunction()">Registrar</button>
+  </form>
+  </div>
+  
+  
+  {% endblock %}
+      <!------Scripts---->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+<script src="{{url_for('static', filename='JS/main.js')}}"></script>
+
+ </div>
+ 
+</body>

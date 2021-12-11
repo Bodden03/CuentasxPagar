@@ -1,0 +1,64 @@
+
+{% extends 'Layout.html' %}
+{% block body %}
+	
+				<!-----AQUI----><div class="table50 ver2 m-b-110">
+                    <h1>Proveedores <span class="badge badge-primary"></span></h1>
+                    <div class="colm-7">
+                        <table class="table table-striped table-border ">
+                            <tdhead>
+                                <tr>
+                                    <td>ID</td>
+                                    <td>Cedula</td>
+                                    <td>Nombre</td>
+                                    <td>Tipo Persona</td>
+                                    <td>Balance</td>
+                                    <td>Estado</td>
+
+                                </tr>
+                            </tdhead>
+                            <tbody>
+                          
+                                 <tr>
+                                    {% for proveedores in proveedores %}
+									<td class=""><a href="editarproveedor/{{proveedores.0}}">{{proveedores.0}}</a></td>
+									<td class="">{{proveedores.1}}</td>
+									<td class="">{{proveedores.2}}</td>
+									<td class="">{{proveedores.3}}</td>
+									<td class="">{{proveedores.4}}</td>
+                                    <td class="">{{proveedores.5}}</td>
+                                    <td>
+                                        <a href="/eliminarproveedor/{{proveedores.0}}" class="btn btn-danger btn-delete">Eliminar</a>
+                                    </td>
+								</tr>
+                                    {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+
+				</div>
+			
+                <div class="card card-body">
+                <h1>Reporte <span class="badge badge-primary"></span></h1>
+                <form action="/reportecandidato" method="POST">
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                      <label for="inputCity">Fecha Desde</label> 
+                      <input type="date" name="fechan" class="form-control" id="inputCity" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="inputZip">Fecha Hasta</label>
+                      <input type="date" id="inputState" name="fechafin" required class="form-control">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">
+                        Generar
+                    </button>
+                     </div>
+                    </form>
+                </div>
+                
+{% endblock %}

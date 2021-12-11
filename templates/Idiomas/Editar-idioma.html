@@ -1,0 +1,21 @@
+{% extends 'Layout.html' %}
+{% block body %}
+<div class="card card-body">
+
+<form action="/update_idioma/{{idioma.0}}" method="POST">
+    <div class="form-group">
+    
+    <input type="text" name="idioma" placeholder="Idioma" value="{{ idioma.1 }}" class="form-control">
+    <select name="estado" id="{{ idioma.2 }}" class="form-control">
+        <option value=1>Disponible</option>
+        <option value=0>No disponible</option>
+    </select>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block">
+            guardar
+        </button>
+     </div>
+    </form>
+
+    {%  endblock %}
